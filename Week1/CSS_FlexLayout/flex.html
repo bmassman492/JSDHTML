@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.1: CSS Flex Layout Example-1</title>
+  <style>
+    /* flex container */
+    body {
+      font-family: Arial;
+    }
+
+    /*zyBook: Chapter 5.1*/
+    #container {
+      display: flex;
+      gap: 20px;
+      flex-direction: row-reverse;
+      /* compare it with flex-direction: row */
+      justify-content: center;
+      /* compare it with justify-content: space-evenly*/
+      flex-wrap: wrap;
+    }
+
+    .photo {
+      padding: 10px;
+      /* width: 400px; */
+      box-shadow: 3px 3px 3px lightgray;
+      border: 1px solid lightgray;
+    }
+
+    .photo img {
+      width: 200px;
+      height: 150px;
+      /* float: left; */
+    }
+
+    .photo p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body> <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Flexbox -->
+  <div id="container">
+    <div class="photo">
+      <img src="https://resources.zybooks.com/WebProgramming/ducatiSmallv1.jpg" alt="Motorcycle">
+      <p>
+        Ducati motorcycle
+      </p>
+    </div>
+    <div class="photo">
+      <img src="https://resources.zybooks.com/WebProgramming/kyotoRestaurantv1.jpg" alt="Restaurant">
+      <p>
+        Japanese restaurant
+      </p>
+    </div>
+    <div class="photo">
+      <img src="https://resources.zybooks.com/WebProgramming/lake1v1.jpg" alt="Lake">
+      <p>
+        Lake in Colorado
+      </p>
+    </div>
+  </div>
+
+</body>
+
+</html>

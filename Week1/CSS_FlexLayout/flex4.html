@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Flex Layout Example-4</title>
+  <style>
+    /* This example shows the flex layout with flex img size as well*/
+    body {
+      font-family: Arial;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      margin: 6px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 500px;
+
+    }
+
+    nav li {
+      background-color: gold;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+    }
+
+    /*https://www.w3schools.com/css/css3_flexbox_items.asp*/
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background-color: black;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      height: auto;
+      justify-content: center;
+
+    }
+
+    #container img {
+
+      padding-top: 10px;
+      /* max-width: 100%; */
+      /*Note: by default, images in CSS won’t scale larger than their 
+      intrinsic (natural) resolution if you’re using max-width: 100%; 
+      height: auto; because max-width only limits growth, it doesn’t force 
+      expansion. Instead, use width: 100% to make the image scale with the flex item
+      even larger than its natural size if the parent grows.*/
+      width: 100%;
+      /* stretch to fill parent */
+      /* Note: scaling above original size may reduce sharpness (pixelation).*/
+      height: auto;
+
+    }
+
+    #aside1 {
+      /*flex: flex-grow flex-shrink flex-basis; */
+      flex: 0 1 30%;
+      /*min-width: 200px;*/
+      background-color: limegreen;
+    }
+
+    #aside2 {
+      flex: 0 1 30%;
+      background-color: blue;
+    }
+
+    main {
+      flex: 0 1 30%;
+      background-color: orange;
+    }
+
+    footer {
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      background-color: plum;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ACME Widgets</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Flexbox layout -->
+  <div id="container">
+    <aside id="aside1">
+      <img src="https://resources.zybooks.com/WebProgramming/ducatiSmallv1.jpg" alt="Motorcycle">
+      <p>Aside1</p>
+    </aside>
+    <main>
+      <img src="https://resources.zybooks.com/WebProgramming/kyotoRestaurantv1.jpg" alt="Restaurant">
+      <p>Main</p>
+    </main>
+    <aside id="aside2">
+      <img src="https://resources.zybooks.com/WebProgramming/lake1v1.jpg" alt="Lake">
+      <p>Aside2</p>
+    </aside>
+  </div>
+  <footer>Footer</footer>
+</body>
+
+</html>

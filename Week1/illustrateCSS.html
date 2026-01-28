@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS illustration</title>
+	<style>
+		/*add embedded CSS*/
+		/*
+		h1 {
+			font-family: Arial, sans-serif;
+		}
+
+		p {
+			padding-left: 3em;
+		}
+
+		section:hover {
+			border: 2px solid black;
+			padding: 1em;
+		}
+
+		.blue {
+			color: blue;
+		}
+
+		.right {
+			color: white;
+			text-align: right;
+			background-color: black;
+		}
+
+		footer:hover {
+			display: none
+		}
+
+		ul>li {
+			color: red;
+		}
+
+		#part2>h1,
+		h2 {
+			font-size: 30px;
+		}
+
+		#part2 li {
+			background-color: yellow;
+		}
+
+		#part2 a {
+			color: green;
+		}
+			*/
+	</style>
+
+</head>
+
+<body>
+	<h1 style="color: #cc0000"> This is displayed as a red heading </h1>
+	<p style="color: #cc0000; background-color: #cccccc;"> This is displayed as a read paragraph on a gray background </p>
+	<section> <!-- add "id" attribute with value "main" -->
+		<h1 class="blue"> The 2022-2023 Speaker Lineup </h1>
+		<p class="blue">October 19, 2022: Jeffrey Toobin </p>
+		<p class="blue">January 16, 2023: Andrew Ross Sorkin </p>
+	</section>
+
+	<section id="part2"> <!-- <h1>, <ul>, <h2>, and three <p> elements are sibling elements -->
+		<h1> The 2017-2018 Speaker Lineup</h1>
+		<ul class="speakers"> <!-- the two <li> elements in this <ul> elements are sibling elements -->
+			<li>January 19, 2017:<a href="speakers/smith.html">John Smith </a> </li>
+			<!-- this <li> element is the first chlld of <ul> -->
+			<li>February 16, 2017: <a href="speakers/lao.html">Lina Lao </a> </li>
+			<!-- this <li> element is the second chlld of <ul> -->
+		</ul>
+		<h2> Post-lecture luncheons </h2>
+		<p> Extend the excitement by going to the luncheon </p>
+		<p> A limited number of tickets are available. </p>
+		<p><em>Contact us by phone</em> at (559) 555-1212.</p>
+	</section>
+
+	<footer>
+		<p class="right">&copy; 2022 </p> <!--https://developer.mozilla.org/en-US/docs/Glossary/Entity-->
+	</footer>
+
+</body>
+
+</html>

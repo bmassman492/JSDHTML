@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Flex Layout Example-2</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      /* flex-wrap: wrap; */
+    }
+
+    header h1 {
+      margin: 6px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      /* remove browser's default format for this unordered list: bullets */
+      padding: 0;
+      margin: 0;
+      width: 500px;
+    }
+
+    nav li {
+      background-color: gold;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      /* remove default text-decoration: underline text decoration line */
+    }
+
+    #container {
+      display: flex;
+      background-color: black;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      height: 200px;
+      /* flex-wrap: wrap; */
+      /* overflow issue: compare with-wrap vs. without-wrap */
+    }
+
+    #aside1 {
+      flex: 0 1 20%;
+      /* This is a flex shorthand declaration: 
+      flex: <flex-grow> <flex-shrink> <flex-basis>;
+      flex-grow: 0, the item will not grow to take up extra space beyond its basis.
+      Even if there’s free space in the container, this item won’t expand.
+      flex-shrink: 1, the item can shrink if the container is too small.
+      Its width will reduce proportionally when space is tight.
+      flex-basis: 20%, the item’s starting size is 20% of the flex container’s main size (usually width).
+      This acts like a preferred width before grow/shrink rules apply. */
+      /*min-width: 200px;*/
+      /*Prevents the item from ever shrinking below 200px, even if flex-shrink: 1. 
+      use min-width: to specify minimum width
+      Compare this with 
+      flex: 0 1 200px;
+      flex item can not grow more than 200px, but can shrink less than 200px.*/
+      background-color: limegreen;
+    }
+
+    main {
+      flex: 0 1 60%;
+      background-color: orange;
+
+    }
+
+    footer {
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      background-color: plum;
+    }
+
+    #aside2 {
+      flex: 0 1 20%;
+      background-color: #0000ff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ACME Widgets</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Flexbox layout -->
+  <div id="container">
+    <aside id="aside1">Aside1</aside>
+    <main>Main</main>
+    <aside id="aside2">Aside2</aside>
+  </div>
+  <footer>Footer</footer>
+</body>
+
+</html>

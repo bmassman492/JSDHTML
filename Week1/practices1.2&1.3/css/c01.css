@@ -1,0 +1,94 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    background: url("../images/constructive-backdrop.jpg") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h3,
+p {
+    float: left;
+    clear: left;
+    width: 320px;
+    background-color: #fff;
+    color: #5a514c;
+    text-align: center;
+}
+
+
+h1 {
+    margin: 50px 0 0 50px;
+    height: 175px;
+    background-image: url("../images/constructive-logo.gif");
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    border-top: 1px solid #bcbdc0;
+    border-left: 1px solid #bcbdc0;
+    border-right: 1px solid #bcbdc0;
+}
+
+h3 {
+    margin: 0 0 0 50px;
+    padding: 25px 0 0 0;
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 1.8em;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 0.80em;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    border-left: 1px solid #bcbdc0;
+    border-right: 1px solid #bcbdc0;
+}
+
+p {
+    margin: 0 0 0 50px;
+    padding: 30px 0 25px 0;
+    font-weight: bold;
+    text-align: center;
+    border-right: 1px solid #bcbdc0;
+    border-bottom: 1px solid #bcbdc0;
+    border-left: 1px solid #bcbdc0;
+}
+
+/* Border under box when you move script in the last example */
+p+script+h3 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #bcbdc0;
+    color: red
+}
+
+/* Fix for full-screen background image: Chrome on Android */
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+/* Notes:
+html {
+    height: 100%;
+}
+//This sets the <html>element (the root of the page) to be exactly the full height 
+of the browser window. Without this, percentage-based heights on child elements may 
+not work properly,because percentages in CSS are relative to the parent’s size. 
+
+html {
+    min-height: 100%;
+}
+//This ensures that even if the content is smaller than the viewport,the <html>element is still 
+at least as tall as the browser window. o Prevents cases where the page might collapse to smaller
+than the screen height. 
+
+body {
+    min-height: 100%;
+}
+//Ensures the <body>(the visible page content container) always fills at least the 
+full height of the viewport. Even if there’s very little content, the body won’t “shrink” — useful 
+for layouts where you want backgrounds,footers,or flex/grid containers to stretch the full screen.
+*/

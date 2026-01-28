@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5.2: CSS grid layout example-1</title>
+</head>
+<style>
+  #grid-container {
+    /* Add your CSS here */
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    border: 1px solid lightgray;
+    padding: 5px;
+    margin: 10px;
+  }
+</style>
+
+<body>
+  <h1>Photo Album</h1>
+  <div id="grid-container">
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/ducativ1.jpg" alt="Motorcycle">
+      <figcaption>One way to scare Mom</figcaption>
+    </figure>
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/smallCatv1.jpg" alt="Cat">
+      <figcaption>Say hello to Daisy</figcaption>
+    </figure>
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/lake1v1.jpg" alt="Lake">
+      <figcaption>Last summer we hiked to a beautiful lake</figcaption>
+    </figure>
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/smallDog.jpg" alt="Dog">
+      <figcaption>Ralph can be somewhat lazy</figcaption>
+    </figure>
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/mountainv1.jpg" alt="Mountains">
+      <figcaption>The mountains in Colorado are gorgeous</figcaption>
+    </figure>
+    <figure>
+      <img src="https://resources.zybooks.com/WebProgramming/redrocks2v1.jpg" alt="Red Rocks">
+      <figcaption>Saw my favorite band at Red Rocks</figcaption>
+    </figure>
+  </div>
+</body>
+
+</html>

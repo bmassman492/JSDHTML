@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Flex Layout Example-3</title>
+  <style>
+    /* This example shows the flex layout with img size fixed, may cause img overflow */
+    body {
+      font-family: Arial;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    header h1 {
+      margin: 6px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 500px;
+
+    }
+
+    nav li {
+      background-color: gold;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: black;
+      text-decoration: none;
+    }
+
+    /*https://www.w3schools.com/css/css3_flexbox_items.asp*/
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background-color: black;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      height: auto;
+    }
+
+
+    #aside1 {
+      /*flex: flex-grow flex-shrink flex-basis; */
+      flex: 0 1 20%;
+      /*min-width: 200px;*/
+      background-color: limegreen;
+
+    }
+
+    #aside2 {
+      flex: 0 1 20%;
+      background-color: blue;
+    }
+
+    main {
+      flex: 1 1 auto;
+      /* min-width: 55%; */
+      background-color: orange;
+    }
+
+    footer {
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      background-color: plum;
+    }
+
+    #container img {
+      width: 300px;
+      height: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ACME Widgets</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Flexbox layout -->
+  <div id="container">
+    <aside id="aside1">
+      <img src="https://resources.zybooks.com/WebProgramming/ducatiSmallv1.jpg" alt="Motorcycle">
+      <p>Aside1</p>
+    </aside>
+    <main>
+      <img src="https://resources.zybooks.com/WebProgramming/kyotoRestaurantv1.jpg" alt="Restaurant">
+      <p>Main</p>
+    </main>
+    <aside id="aside2">
+      <img src="https://resources.zybooks.com/WebProgramming/lake1v1.jpg" alt="Lake">
+      <p>Aside2</p>
+    </aside>
+  </div>
+  <footer>Footer</footer>
+</body>
+
+</html>
