@@ -1,0 +1,43 @@
+<!DOCTYPE html> <!-- header to indicate this document is written by HTML5 -->
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8"> <!-- required element in HTML5 -->
+  <title>Birthday Card</title>
+  <link rel="stylesheet" href="css/style.css"> <!-- link to external css file -->
+  <script src="js/script1.js"></script> <!-- link to external js file -->
+</head>
+
+<body>
+  <div id="outside">
+    <h2 id="outside-title">Happy Birthday!</h2>
+    <img id="outside-pic" src="img/birthday_outside.jpg" alt="birthdat image img"> <!-- replace img here -->
+    <p><button onclick="opencard()">Click to open</button></p>
+  </div>
+
+  <div id="inside">
+    <h2 id="inside-title"><a href="https://www.youtube.com/watch?v=_z-1fTlSDF0&list=RD_z-1fTlSDF0&start_radio=1">Happy Birthday!</a></h2>
+
+    <p id="message">
+      You've brought so much joy and love to our lives! <!-- modify the text content here to add specific birthday message -->
+    </p>
+    <img id="inside-pic" src="img/birthday_girl.jfif" alt="girl img"> <!-- replace img here -->
+
+    <!-- add <form> element here before the <p> element below -->
+      <form action="reply.html">
+        <label for="wishinput">Enter your birthday wish:</label>
+        <input type="text" id="wishinput" name="wishinput">
+        <input type="submit" value="Submit">
+
+        </label>
+      </form>
+
+    <p>
+      <button onclick="closecard()">Click to close</button>
+    </p>
+
+  </div>
+
+</body>
+
+</html>

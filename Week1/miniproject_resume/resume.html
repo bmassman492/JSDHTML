@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML&CSS Example: Resume</title>
+  <style>
+    /* Style the root html element: give the whole page a gray background so the white resume area stands out */
+    html {
+      background-color: gray;
+    }
+
+    /* Base layout and appearance of the main page content */
+    body {
+      min-width: 500px;
+      /* Ensure the layout never shrinks narrower than 500px */
+      max-width: 800px;
+      /* Prevent the layout from growing wider than 800px on large screens */
+      background-color: white;
+      /* Make the resume content area white against the gray page background */
+      margin: 0 auto;
+      /* Center the body horizontally in the viewport */
+    }
+
+    /* Add spacing to the right of each icon inside the contact area so the text does not touch the icons */
+    #contact img {
+      padding-right: 4px;
+    }
+
+    /* Base styling for the header that contains the name, title, and contact info */
+    header {
+      color: white;
+      /* Make header text (name, title, etc.) white */
+      background-color: black;
+      /* Use a black background for high contrast */
+      padding: 20px;
+      /* Add space inside the header around its contents */
+    }
+
+    /* Adjust list item indentation for lists using the "list" class */
+    .list li {
+      margin-left: -25px;
+      /* Use a negative margin to pull list items back to the left, reducing the default indentation */
+    }
+
+    /* Override list indentation specifically for list items inside #experience so they align with the text */
+    #experience li {
+      margin-left: 0px;
+      /* Reset left margin to the normal (non-negative) position */
+    }
+
+    /* Slightly enlarge text for spans using the "title" class (job titles) */
+    .title {
+      font-size: 120%;
+      /* Increase font size to 120% of the surrounding text */
+    }
+
+    /* Additional adjustments to the header box model after the initial header rule */
+    header {
+      padding-right: 0px;
+      /* Remove right padding so the header lines up neatly with the left column */
+      margin-right: 0px;
+      /* Ensure there is no extra margin on the right of the header */
+    }
+
+    /*
+      Legacy float-based layout (no longer used, replaced by flexbox below).
+      This block was originally used to create a left column by floating it.
+      Keeping it here (commented out) for reference in case you want to compare
+      float-based layouts with flexbox-based layouts.
+  
+      .left {
+        float: left;               // Place this element to the left and let other content wrap around it
+        clear: left;               // Move below any previous left-floating elements
+        margin-right: 30px;        // Add space between this column and the content to its right
+        width: 40%;                // Make this column 40% of the available width
+        max-width: 300px;          // Do not allow it to grow wider than 300px
+        min-width: 200px;          // Do not allow it to shrink smaller than 200px
+        margin-right: 30px;        // (duplicate) right margin to separate from the next column
+      }
+      */
+
+    /* Main page layout using flexbox: turn the body into a horizontal flex container */
+    body {
+      display: flex;
+      /* Use flexbox layout so children can form columns */
+      flex-direction: row;
+      /* Arrange child elements (left2 and right2) in a row (side by side) */
+      width: 90%;
+      /* Make the body occupy 90% of the viewport width (still capped by min/max above) */
+      border: grey solid;
+      /* Add a solid gray border around the resume area */
+    }
+
+    /* Vertical spacing between sections such as EDUCATION, SKILLS, WORK EXPERIENCE, etc. */
+    section {
+      margin-bottom: 40px;
+      /* Add space under each section to visually separate them */
+    }
+
+    /* Reduce vertical spacing under h3 headings so they stay closer to the content they label */
+    h3 {
+      margin-bottom: 10px;
+      /* Smaller bottom margin than browser default */
+    }
+
+    /* Left column container: holds header, education, skills, certifications */
+    .left2 {
+      flex: 0 1 250px;
+      /* Do not grow, can shrink, base width 250px (fixed-width left column) */
+      margin-right: 20px;
+      /* Add space between left and right columns */
+      background-color: lightgrey;
+      /* Light gray background to visually distinguish the sidebar column */
+    }
+
+    /* Apply internal padding to elements with class "left" that appear inside the left2 column */
+    .left2 .left {
+      padding-left: 20px;
+      /* Space content away from the left edge of the left column */
+      padding-right: 20px;
+      /* Space content away from the right edge of the left column */
+    }
+
+    /* Right column container: main content area (objective and work experience) */
+    .right2 {
+      flex: 1;
+      /* Allow this column to grow and take up remaining space (more flexible width) and shrink (use default)  */
+      padding-right: 20px;
+      /* Add some spacing from the right edge of the body border */
+    }
+
+    /* Common spacing for the time and location spans beneath job titles */
+    span.time,
+    span.location {
+      padding-right: 20px;
+      /* Separate the time and location text from whatever follows */
+      padding-left: 10px;
+      /* Add a bit of space before the text, especially after icons */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left2">
+    <header>
+      <h1>BEN MYERS</h1>
+      <p><i>Chief Information Security Ofﬁcer</i></p>
+      <p id="contact">
+        <img src="icons/email.png" alt="email icon" width="14">ben.myers@email.com<br>
+        <img src="icons/phone.png" alt="phone icon" width="14">(123) 456-7890<br>
+        <img src="icons/location_icon.png" alt="location icon" width="14">Pittsburgh, PA<br>
+        <img src="icons/linkedin.png" alt="email icon" width="16">LinkedIn
+      </p>
+    </header>
+    <section id="education" class="left">
+      <h3>EDUCATION</h3>
+      <p>Bachelor of Science Cybersecurity<br>
+        <b>Carnegie Mellon University</b><br>
+        2008 - 2012<br>
+        Pittsburgh, PA
+      </p>
+    </section>
+
+    <section id="skills" class="left">
+      <h3>SKILLS</h3>
+      <ul id="skills" class="list">
+        <li>Cisco ASA</li>
+        <li>Suricata</li>
+        <li>Splunk</li>
+        <li>Nessus</li>
+        <li>Symantec Endpoint Protection</li>
+        <li>Proofpoint</li>
+        <li>ModSecurity</li>
+        <li>VeraCrypt</li>
+        <li>Wireshark</li>
+        <li>Metasploit Framework</li>
+      </ul>
+    </section>
+
+    <section id="certificate" class="left">
+      <h3>CERTIFICATIONS</h3>
+      <ul class="list">
+        <li>Certiﬁed Information Systems Security Professional (CISSP)</li>
+      </ul>
+    </section>
+  </div>
+  <div class="right2">
+    <section id="objective">
+      <h3>CAREER OBJECTIVE</h3>
+      <p>Seasoned chief information security ofﬁcer with 5 years of experience, eager to contribute expertise at PNC
+        Financial Services Group. Excited to enhance the cybersecurity posture at PNC Financial Services Group and
+        protect
+        sensitive
+        customer data from emerging threats.</p>
+    </section>
+    <section id="experience">
+      <h3>WORK EXPERIENCE</h3>
+      <div>
+        <p><span class="title">Architect</span><br>
+          <b>Highmark Health</b><br>
+          <img src="icons/calendar_2.png" alt="calendar icon" width="12"><span class="time">2018 -
+            current</span>
+          <img src="icons/location_2.png" alt="location icon" width="12"><span class="location">Pittsburgh, PA</span>
+        </p>
+        <ul class="list">
+          <li>Developed a comprehensive network security architecture for Highmark Health that decreased security
+            incidents
+            by 22%.</li>
+          <li>Led the migration and upgrade of Cisco ASA ﬁrewalls, resulting in enhanced network security and increased
+            throughput by 43%.</li>
+
+          <li>Implemented VeraCrypt full-disk encryption solution to ensure data conﬁdentiality for sensitive
+            information.
+          </li>
+          <li>Leveraged Splunk to create real-time security dashboards and reports that reduced incident response time
+            by
+            64%.</li>
+        </ul>
+      </div>
+      <div>
+        <p><span class="title">Security Consultant</span><br>
+          <b>PricewaterhouseCoopers</b><br>
+          <img src="icons/calendar_2.png" alt="calendar icon" width="12"><span class="time">2015 - 2018</span>
+          <img src="icons/location_2.png" alt="location icon" width="12"><span class="location">Pittsburgh, PA</span>
+        </p>
+        <ul class="list">
+          <li>Deployed Suricata intrusion detection system across 5 client networks, resulting in a 43% improvement in
+            threat
+            detection.</li>
+          <li>Conducted vulnerability assessments using Nessus, which reduced their risk exposure by 74%.</li>
+          <li>Conﬁgured ModSecurity rules to protect web applications, reducing the risk of SQL injection and XSS
+            attacks
+            by
+            62%.</li>
+          <li>Conﬁgured ModSecurity rules to protect web applications, reducing the risk of SQL injection and XSS
+            attacks
+            by
+            62%.
+            Performed penetration testing using Metasploit Framework, to identify vulnerabilities in and provide
+            remediation.</li>
+        </ul>
+      </div>
+      <div>
+        <p><span class="title">Security Analyst</span><br>
+          <b>UPMC</b><br>
+          <img src="icons/calendar_2.png" alt="calendar icon" width="12"><span class="time">2012 - 2015</span>
+          <img src="icons/location_2.png" alt="location icon" width="12"><span class="location">Pittsburgh, PA</span>
+        <ul class="list">
+          <li>Implemented security policies and procedures to ensure compliance with industry standards such as HIPAA
+            and
+            PCI-DSS.</li>
+          <li>Collaborated with teams to perform network trafﬁc analysis using Wireshark, boosting malicious activity
+            mitigation
+            by 32%.</li>
+          <li>Optimized Proofpoint email security solutions to cut down on the number of spam and phishing emails by
+            64%.
+          </li>
+          <li>Worked with vendors and suppliers to evaluate and select security solutions, cutting costs by 23% while
+            maintaining security.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
