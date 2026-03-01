@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>pop-up box examples</title>
+</head>
+
+<body>
+	<h1 id="demo"></h1>
+	<script>
+		let alertBox = alert("Hello! I am an alert box!");  //alert box
+		console.log(alertBox); //did you find error message in console in your browser when loading the page in web browser
+		let confirmBox = confirm("Press a button!");         //confirm box
+		console.log(confirmBox);
+
+		let person = prompt("Please enter your name", "Harry Potter");  //prompt box
+		//  var person = prompt("Please enter your name");
+		console.log(person);
+		console.log(typeof person);
+
+
+		if (person !== null && person !== '') {
+			document.getElementById("demo").innerHTML =
+				"Hello " + person + "! How are you today?";
+		}
+		else if (person === '')
+			document.getElementById("demo").innerHTML = 'empty string!';
+		else
+			document.getElementById("demo").innerHTML = new String(person);
+
+	</script>
+	<script>
+		/*
+		var entryA = prompt("Enter any value", 12345.6789);
+		var entryB = entryA;
+		console.log('before, entryA is a string: '+ entryA);
+		entryA = parseInt(entryA);
+		console.log('after, entryA is an integer: '+ entryA);
+		
+		console.log('before, entryB is a string: '+ entryB);
+		entryB = parseFloat(entryB);
+		console.log('after, entryB is a floating point number: '+ entryB);
+		console.log('after, entryB.toFixed(0) is a string: '+ entryB.toFixed(0));
+		
+		var entryC = prompt("Enter any value", "Hello");
+		entryC = parseInt(entryC);
+		console.log('convert entryC to an integer: '+ entryC);
+		
+		var entryD = prompt("Enter any value", "44bye");
+		entryD = parseInt(entryD);
+		console.log('convert entryD to an integer: '+ entryD);
+		*/
+	</script>
+
+</body>
+
+</html>

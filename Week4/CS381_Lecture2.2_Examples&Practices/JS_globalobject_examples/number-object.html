@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Objects - Number Object</title>
+</head>
+
+<body>
+	<h1>Use Number Object example</h1>
+	<div id="info"></div>
+	<script>
+		// Create a variable to hold a string that will be used
+		let originalNumber = "10.83456";
+		// Create a variable to hold a message that will be shown on the page
+		let msg = '<h2>original number string</h2><p>' + originalNumber + '</p>';
+		// Parse the string to number
+		originalNumber = Number(originalNumber); // parseFloat(originalNumber);
+		msg += '<h2>original number</h2><p>' + originalNumber + '</p>';
+		// Round the number to 3 decimal places and add it to the msg variable
+		msg += '<h2>3 decimal places</h2><p>' + originalNumber.toFixed(3) + '</p>';
+		// Round the number to a precisely 3 digits and add it to the msg variable
+		msg += '<h2>3 digits</h2><p>' + originalNumber.toPrecision(3) + '</p>';
+		// parse the number to integer
+		msg += '<h2>parse to integer</h2><p>' + parseInt(originalNumber) + '</p>';
+
+		// Create a variable called el to hold the element whose id attribute has a value of info
+		let el = document.getElementById('info');
+		// Write the message into that element
+		el.innerHTML = msg;
+
+	</script>
+</body>
+
+</html>

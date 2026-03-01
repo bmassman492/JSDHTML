@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test Score App</title>
+	<link rel="stylesheet" href="score.css">
+
+</head>
+
+<body>
+	<main>
+		<h1>The Test Scores App</h1>
+		<img src="teacher.png" id="teacher" alt="Teacher Illustration" width="177" height="277">
+
+		<form id="score_form" method="post">
+			<!-- User input is processed by client-side JavaScript.
+				The "action" attribute is omitted intentionally.
+				By default, the browser would submit the form data to the current page URL. 
+			  The method="post" attribute is used so that form data is not appended to the URL. 
+			-->
+			<div class="field input">
+				<label for="score1">Test 1:</label>
+				<input type="number" id="score1" value="100" min="0" max="100" required aria-describedby="score1_error">
+				<span id="score1_error" class="error-msg" aria-live="polite"></span>
+			</div>
+			<!-- Use <div> to group each form field (i.e., label, input, and span).
+			     This makes it easier to apply CSS styling and use flexbox or grid layout. 
+			-->
+			<div class="field input">
+				<label for="score2">Test 2:</label>
+				<input type="number" id="score2" value="100" min="0" max="100" required aria-describedby="score2_error">
+				<span id="score2_error" class="error-msg" aria-live="polite"></span>
+			</div>
+
+			<div class="field input">
+				<label for="score3">Test 3:</label>
+				<input type="number" id="score3" value="100" min="0" max="100" required aria-describedby="score3_error">
+				<span id="score3_error" class="error-msg" aria-live="polite"></span>
+			</div>
+
+			<div class="field output">
+				<label for="scoreTotal">Total Points:</label>
+				<input type="text" id="scoreTotal" readonly>
+			</div>
+
+			<div class="field output">
+				<label for="scoreFinal">Final Letter Grade:</label>
+				<input type="text" id="scoreFinal" readonly>
+			</div>
+
+			<div class="field button">
+				<label>&nbsp;</label>
+				<button type="button" id="calculate">Calculate</button>
+				<!-- Use <button type="button"> for JavaScript-triggered actions 
+					because it does not trigger the default form submission behavior. 
+				-->
+				<!-- Use <button type="submit"> or <input type="submit"> will trigger 
+					the default form submission behavior inside a <form> element or outside 
+						a <form> element but with a form attribute to connect to a <form> element 
+				-->
+			</div>
+		</form>
+	</main>
+	<script>
+		// define a function so that in js code, $ can be used to replace document.getElementById
+		const $ = function (id) { return document.getElementById(id); };
+
+		//define processEntries function
+		const processEntries = function () {
+			$('scoreTotal').value = "";
+			$('scoreFinal').value = "";
+			let errorMessage = "";
+			let isValid = true;
+			let testscores = [];
+
+			//step-1: get test score from user input in the web page
+			const numScores = document.querySelectorAll("div.input").length;
+			for (let i = 0; i<numScores; i++) {
+			let score = $("score" + (i+1)).value;
+			score = parseInt(score);
+			console.log(typeof score);
+			console.log(score);
+		
+
+			//step-2: validate inputs: 
+			//test scores should be numerical data and non-negative value 
+			//validate test score inputs
+			if(isNaN(score)||score<0)
+			{
+				errorMessage += `Test ${i+1} input is invalid\n`				
+			}
+			else
+			{
+				testscores[i] = score;
+			}
+		}
+			//step-3: if all inputs are valid test scores, calculate total score 
+			let totalScore = 0;
+			for (let i=0; i<testscores.length; i++)
+				totalScore += testscores[i];
+			console.log(totalScore);
+
+			//step-4: determine the final grade based on totalscore	
+			let finalGrade = '';
+			if(totalScore >= 290) finalGrade = 'A';
+			else if(totalScore >= 240) finalGrade = 'B';
+			else if(totalScore >= 210) finalGrade = 'C';
+			else if(totalScore >= 180) finalGrade = 'D';
+			else finalGrade = 'F';
+			console.log(finalGrade);
+
+
+			//step-5: display total score (with one decimal place) and final grade
+			$("scoreTotal").value = totalScore.toFixed(1);
+			$("scoreFinal").value = finalGrade;
+			
+
+
+			//step-6: create a pop-up error message to display error messages 
+			// if any of user inputs is incorrect
+			if(errorMessage){
+				alert(errorMessage);
+				return;
+			}
+
+		};  //end of processEntries function
+
+		$('calculate').addEventListener('click', processEntries);
+	</script>
+</body>
+
+</html>

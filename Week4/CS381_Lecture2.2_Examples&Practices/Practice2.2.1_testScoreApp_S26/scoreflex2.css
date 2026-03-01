@@ -1,0 +1,138 @@
+@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+
+/* ---------- Page / container ---------- */
+/* uses Flexbox (no floats) lets the teacher image wrap to the next line automatically
+aligns each .field row nicely (label → input → error span) 
+puts error messages on the next line under the input (cleaner UI) 
+**Use ChatGPT to get help on the improvement of the flex page layout.**
+*/
+body {
+  font-family: "Wellfleet", Arial, Helvetica, sans-serif;
+  background-color: white;
+  margin: 0 auto;
+
+  /* Keep your overall look, but make it more flexible for wrapping */
+  width: 60%;
+  max-width: 900px;
+  min-width: 320px;
+
+  border: 3px solid blue;
+  padding: 0 1em 0.5em;
+}
+
+h1 {
+  color: blue;
+  margin: 0.5em 0;
+}
+
+/* main contains: h1, img, form */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  /* allow teacher image to go to next line */
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Make the heading take a full row */
+main>h1 {
+  flex: 0 0 100%;
+}
+
+/* ---------- Teacher image (flex item) ---------- */
+#teacher {
+  /* Put image after the form when they wrap */
+  order: 2;
+
+  /* Allow shrinking and wrapping */
+  flex: 0 1 200px;
+
+  /* Prevent overflow on small screens */
+  max-width: 100%;
+  height: auto;
+
+  /* Remove float-era spacing */
+  margin: 0;
+}
+
+/* ---------- Form (flex item) ---------- */
+#score_form {
+  order: 1;
+
+  /* Form takes remaining space; wraps above image on small widths */
+  flex: 1 1 380px;
+  min-width: 260px;
+}
+
+/* ---------- Form rows (.field) ---------- */
+.field {
+  display: flex;
+  flex-wrap: wrap;
+  /* allow span (error) to drop to next line */
+  align-items: center;
+  gap: 6px 10px;
+  /* row-gap column-gap */
+  margin-bottom: 0.6em;
+}
+
+/* Fixed label column so inputs align */
+.field label {
+  flex: 0 0 10em;
+  text-align: right;
+  padding-bottom: 0;
+  /* no longer needed with flex */
+}
+
+/* Inputs: default size */
+.field input {
+  flex: 0 0 6em;
+  /* similar to your original 5em, but a bit nicer */
+  margin: 0;
+  /* remove old margins */
+}
+
+/* Output fields can be wider */
+.field.output input {
+  flex: 0 0 10em;
+}
+
+/* Error message: force to next line under the input area */
+.field .error-msg {
+  flex: 1 0 100%;
+  /* take full row */
+  margin-left: 10em;
+  /* line up under the input column */
+  color: red;
+  font-size: 80%;
+  min-height: 1em;
+  /* keeps layout stable even when empty */
+}
+
+/* ---------- Button row ---------- */
+.field.button label {
+  visibility: hidden;
+  /* keeps spacing column without showing it */
+}
+
+.field.button button {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.25em 0.75em;
+}
+
+/* ---------- Small-screen tweak ---------- */
+@media (max-width: 700px) {
+  body {
+    width: 92%;
+  }
+
+  /* On narrow screens, let labels stack above inputs */
+  .field label {
+    flex: 0 0 100%;
+    text-align: left;
+  }
+
+  .field .error-msg {
+    margin-left: 0;
+  }
+}

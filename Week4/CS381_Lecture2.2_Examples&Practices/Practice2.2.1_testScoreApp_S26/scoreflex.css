@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+
+body {
+  font-family: 'Wellfleet', Arial, Helvetica, sans-serif;
+  background-color: white;
+  margin: 0 auto;
+  width: 60%;
+  min-width: 600px;
+  border: 3px solid blue;
+  padding: 0 1em .5em;
+}
+
+/* FLEX LAYOUT: put the form and the teacher image in a row */
+/*Flex layout for the page: form on the left, teacher image on the right*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+  /* allow wrapping on smaller screens */
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Make the title take full width */
+main>h1 {
+  flex: 0 0 100%;
+  color: blue;
+  margin: .5em 0;
+}
+
+/* Teacher image goes to the right */
+#teacher {
+  order: 2;
+  /* put it after the form in the flex row */
+  flex: 0 0 auto;
+  /* keep natural image size */
+  margin: 0;
+  /* remove float-era margins */
+}
+
+/* Form takes remaining space */
+#score_form {
+  order: 1;
+  flex: 1 1 320px;
+  /* grow, shrink, minimum width */
+  min-width: 280px;
+}
+
+/* Flex layout for each form row: label+input+error message */
+/* Each row is a flex row */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: .5em;
+}
+
+/* Label fixed width, right-aligned (like your float version) */
+.field label {
+  flex: 0 0 10em;
+  /* same idea as width: 10em */
+  text-align: right;
+}
+
+/* Inputs keep a reasonable width */
+.field input {
+  flex: 0 0 5em;
+  /* similar to your original input width */
+}
+
+/* Error message can take remaining space */
+.field .error-msg {
+  flex: 1 1 auto;
+  color: red;
+  font-size: 80%;
+  font-size: 80%;
+}
+
+/* Button row: keep the button aligned after the label "spacer" */
+.field.button button {
+  flex: 0 0 auto;
+}

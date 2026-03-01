@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects - Window Object</title>
+  </head>
+  <body>
+    <h1>Use Window Object Example</h1>
+    <div id="info"></div>
+    <script>
+		// Create a variable called msg to hold a message that will be shown on the page
+		// Find the width of the browser window, and put this in the msg variable
+		var msg = '<h2>browser window</h2><p>width: ' + window.innerWidth + '</p>';
+		//var msg = '<h2>browser window</h2><p>width: ' + innerWidth + '</p>';
+		// Find the height of the window and add it to the msg variable
+		msg += '<p>height: ' + window.innerHeight + '</p>';
+		// Find the number of items in the browser window's history and add it to the msg variable
+		msg += '<h2>history</h2><p>items: ' + window.history.length + '</p>';
+		
+		// Find the width of the computer screen and add it to the msg variable
+		msg += '<h2>screen</h2><p>width: ' + window.screen.width + '</p>';
+		// Find the height of the computer screen and add it to the msg variable
+		msg += '<p>height: ' + window.screen.height + '</p>';
+		// 	// Find the location of the current page
+		msg += '<p>Current page: ' + window.location  + '</p>';
+		console.log (window.history);
+//https://developer.mozilla.org/en-US/docs/Web/API/History_API
+
+		// Create a variable called el to hold the element whose id attribute has a value of info
+		var el = document.getElementById('info');
+		// Write the message into that element
+		el.innerHTML = msg;
+    </script>		
+ 	<a href="reply.html">go to next page</a>
+	
+  </body>
+</html>

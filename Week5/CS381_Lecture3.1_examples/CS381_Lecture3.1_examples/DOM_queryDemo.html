@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Document Object Model & DOM query - Demo</title>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/c05.css">
+  <script src="DOM_queryDemo.js" defer></script> <!--add "defer" attribute will delay the
+  execution of js code until the HTML document has been completely parsed (i.e., DOM tree has been built) 
+  by browser. Note: defer is different from window.onload. window.onload tells browser to 
+  execute the script after the entire page, including images, stylesheets, and other resources, 
+  has finished loading (i.e., displayed in web browser). -->
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li id="one" class="hot"><em>fresh</em> figs</li>
+      <li id="two" class="hot">pine nuts</li>
+      <li class="hot">honey</li>
+      <li id="four">balsamic vinegar</li>
+    </ul>
+  </div>
+  <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects - Math Object</title>
+  </head>
+  <body>
+    <h1>Use Math Object Example</h1>
+    <div id="info"></div>
+    <script>
+		// Create a variable to hold a random number between 1 and 10
+		var randomNum = Math.floor((Math.random() * 10) + 1);
+		// Create a variable called el to hold the element whose id attribute has a value of info
+		var el = document.getElementById('info');
+		// Write the number into that element
+		el.innerHTML = '<h2>random number: ' + randomNum + '</h2>';
+		
+	/*In this function, use the Math.round() function to round the number to the nearest integer. 
+    First convert the number to a string using “e+2” to shift the decimal places two positions to the right.  
+    Then, add “e-2” to shift the decimal places back to their original position. 
+    Finally, use the unary plus operator + to convert the string back to a numeric value.
+    */
+    function roundToTwo(number) {
+      return +(Math.round(number + "e+2") + "e-2");
+    }
+
+    randomNum = Math.random() + 10; // generate a random number between 0 to 11
+    el.innerHTML += `<h2>random number generated: ${randomNum}</h2>`;
+    el.innerHTML += `<h2>round off random number to two decimal places: ${roundToTwo(randomNum)} </h2>`;
+	</script>
+  </body>
+</html>

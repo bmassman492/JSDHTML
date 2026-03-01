@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Object - document object</title>
+</head>
+
+<body>
+	<h1>Use Document Object Example</h1>
+	<div id="footer"></div>
+	<script>
+		// Create a variable called msg to hold a message that will be shown on the page
+		// Find the title of the document, and put this in the msg variable
+		let msg = '<p><b>page title: </b>' + document.title + '<br />';
+		// Find the URL of the document and add it to the msg variable
+		msg += '<b>page address: </b>' + document.URL + '<br />';
+		// Find the date the document was last modified and add it to the msg variable
+		msg += '<b>last modified: </b>' + document.lastModified + '</p>';
+
+		// Create a variable called el to hold the element whose id attribute has a value of footer
+		let el = document.getElementById('footer');
+		// Write the message into that element
+		el.innerHTML = msg;
+
+		// Add document.write() statement(s) to create a sample <ol> element
+		document.write("<ol>");
+		document.write("<li>List item-1</li>");
+		document.write("<li>List item-2</li>");
+		document.write("</ol>");
+	</script>
+</body>
+
+</html>
+<!-- The Document object in the Web API represents the entire web page 
+ loaded in the browser and serves as the entry point to the page's content, 
+ which is structured as the Document Object Model (DOM) tree. 
+ It provides numerous properties and methods to access and manipulate the content, 
+ structure, and style of the document.  
+ 
+ practices: google search for "property of document object in Web API", and try
+ to use some of the properties in the console in the developer tool in web browser
+ -->

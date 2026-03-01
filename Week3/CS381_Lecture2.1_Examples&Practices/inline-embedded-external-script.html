@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Three ways to apply JavaScript to an HTML document</title>
+	<link rel="stylesheet" href="css/navigation.css">
+</head>
+
+<body>
+	<h1>Navigation Bar 3</h1>
+	<nav id="nav_bar_3">
+		<ul>
+			<li><a href="#" style="color: purple">Home</a></li>
+			<li><a href="#" class='current' id="ticket">Get Tickets</a></li>
+			<li><a href="#" id="member" onclick="alert('From inline JavaScript!'); ">Become a Member</a></li>
+			<li><a href="#" id="about" style="color: green">About Us</a></li>
+		</ul>
+	</nav>
+
+	<footer>
+		<!-- 3rd embedded js -->
+		<script>
+			let today = new Date();
+			document.write("<p>&copy;&nbsp;" + today.getFullYear() + ", cs381</p>");
+		</script>
+		<!-- <noscript> tags are used to display content when JavaScript is disabled in a user's browser -->
+		<noscript>&copy; 2021 </noscript>
+	</footer>
+	<script src="js/practice2.js"></script>
+
+</body>
+
+</html>
