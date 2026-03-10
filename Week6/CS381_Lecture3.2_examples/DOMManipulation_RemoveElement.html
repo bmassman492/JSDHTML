@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Remove Element</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/c05.css">
+</head>
+
+<body>
+	<div id="page">
+		<h1 id="header">List</h1>
+		<h2>Buy groceries</h2>
+		<ul>
+			<li id="one" class="hot"><em>fresh</em> figs</li>
+			<li id="two" class="hot">pine nuts</li>
+			<li id="three" class="hot">honey</li>
+			<li id="four">balsamic vinegar</li>
+		</ul>
+	</div>
+	<script>
+
+		// Store the element to be removed in a variable.
+		let removeEl = document.getElementsByTagName('li')[3];
+
+		// Find the element which contains the element to be removed.
+		let containerEl = removeEl.parentNode;
+
+		// Remove the element.
+		containerEl.removeChild(removeEl);
+
+		//Remove <em> element	
+		let removeEm = document.querySelector('em');
+		// removeEm.remove();
+
+		//Remove all other <li> elements	
+		let removeEls = document.querySelectorAll('li');
+		//removeEls.forEach( function (removeItem) { removeItem.remove(); });	 
+
+	</script>
+</body>
+
+</html>

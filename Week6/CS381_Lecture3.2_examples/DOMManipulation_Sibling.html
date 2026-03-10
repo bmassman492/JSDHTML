@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document Object Model - Sibling</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/c05.css">
+</head>
+
+<body>
+	<div id="page">
+		<h1 id="header">List</h1>
+		<h2>Buy groceries</h2>
+		<ul>
+			<li class="hot"><em>fresh</em> figs</li>
+			<li id="two" class="hot">pine nuts</li>
+			<li class="hot">honey</li>
+			<li>balsamic vinegar</li>
+		</ul>
+
+	</div>
+	<script>
+		// Select the starting point and find its siblings.
+		let startItem = document.getElementById('two');
+		let prevItem = startItem.previousElementSibling; //what is the problem here? did not be able to access the first <li> element
+		let nextItem = startItem.nextElementSibling;
+
+		console.log(prevItem.nodeName, prevItem.nodeType); //text node which represents the whitespace between <li> elements
+		console.log(document.querySelector('ul').children.length); //obtain all element child nodes of the <ul> element on DOM tree
+		console.log(document.querySelector('ul').childNodes.length); //obtain all child nodes of the <ul> element on DOM tree
+
+		// Change the values of the siblings' class attributes.
+		prevItem.className = 'complete';  //why did not see the change of the value of class attribute  
+		nextItem.className = 'cool'; //why did not see the change of the value of class attribute
+
+	</script>
+</body>
+
+</html>

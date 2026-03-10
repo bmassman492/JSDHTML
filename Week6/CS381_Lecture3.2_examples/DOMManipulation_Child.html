@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Document Object Model - Child Element</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/c05.css">
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li><em>fresh</em> figs</li>
+      <li>pine nuts</li>
+      <li>honey</li>
+      <li>balsamic vinegar</li>
+    </ul>
+  </div>
+  <script>
+    // Select the starting point and find its children.
+    let startItem = document.getElementsByTagName('ul')[0];  //return first <ul> element node/object on DOM 
+    let firstItem = startItem.firstElementChild; //use firstElementChild instead of firstChild
+    let lastItem = startItem.lastElementChild;   //use lastElementChild instead of lastChild
+
+    // Change the values of the first and last child of <ul> element's class attribute.
+    //firstItem.className = 'complete';
+    //lastItem.className = 'cool';
+
+    //How to change values of all child elements in <div> element' class attributes to "complete"
+    //
+    //convert HTMLCollection to array, and then use forEach() method from array
+    let ulEl = document.querySelector("ul");
+    let ulChildren = ulEl.children; //return HTMLCollection object that contains all children DOM element nodes
+    ulChildren.forEach(function (eachChild) {
+      eachChild.className = "complete";
+
+    });
+    //Note: there is no foreach() method for HTMLCollection object
+    //Instead, in order to use foreach() method, we can convert HTMLCollection object
+    //to be an Array object, Array has forEach() method. 
+
+    /* let ulChildrenArray = Array.from(ulChildren); //convert to Array object, and then can use forEach() method
+    ulChildrenArray.forEach(function (eachChild) { eachChild.className = "complete"; }); */
+
+  </script>
+</body>
+
+</html>

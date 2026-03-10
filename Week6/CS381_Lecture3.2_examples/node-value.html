@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery - Chapter 5: Document Object Model - Node Value</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/c05.css">
+  </head>
+  <body>
+    <div id="page">
+      <h1 id="header">List</h1>
+      <h2>Buy groceries</h2>
+      <ul>
+        <li><em>fresh</em> figs <span>!</span></li>
+        <li>pine nuts</li>
+        <li>honey</li>
+        <li>balsamic vinegar</li>
+      </ul>
+    </div>
+    <script>
+	
+		let itemTwo = document.querySelectorAll('li')[1];  // Get 2nd list item
+		let elTextNode  = itemTwo.firstChild;    // Get its text node
+		console.log(elTextNode.nodeValue); //get the value in the text node 
+		
+		elTextNode.nodeValue = 'Kale'; //overwrite the value in the text node
+		console.log(elTextNode.nodeValue); //get the value in the text node
+	
+	/*	itemTwo.textContent = 'Kale';
+		console.log(itemTwo.textContent); //also works, to replace "pine nuts" with "Kale"
+	 */
+		
+	</script>
+  </body>
+</html>

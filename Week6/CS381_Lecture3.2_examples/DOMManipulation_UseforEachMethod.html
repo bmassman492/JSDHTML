@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Document Object Model - Use "forEach" method</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/c05.css">
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li id="one" class="hot"><em>fresh</em> figs</li>
+      <li id="two" class="hot">pine nuts</li>
+      <li id="three" class="hot">honey</li>
+      <li id="four">balsamic vinegar</li>
+    </ul>
+  </div>
+
+  <script>
+
+    //how to change all 'hot' elements to 'cool' elements?
+    let elems = document.getElementsByClassName('hot'); // Find items with class="hot" 
+    //elems.forEach(function (ele) { ele.className = 'cool'; }); //does not work
+    let elemArray = Array.from(elems); //Convert HTMLCollection to Array
+    //Note: the regular for loop can not work properly here due to the elems is a "live" HTMLCollection object 
+    //Convert it from HTMLCollection object to regular Array object using Array.from() method
+    //And then use forEach() method or regular for loop 
+    //elemArray.forEach(function (ele) { ele.className = 'cool'; });
+
+    //version-2: use querySelectorAll() instead, which can call forEach method directly
+    elems = document.querySelectorAll('.hot');
+    elems.forEach(function (ele) { ele.className = 'cool'; });
+
+    //How about add more classes to those elements, when an element has multiple classes
+    //then use classList.add() or classList.remove() method to add or remove a class
+    elems.forEach(ele => {
+      ele.classList.add("complete");
+      ele.classList.remove("cool");
+    });
+
+  </script>
+</body>
+
+</html>
