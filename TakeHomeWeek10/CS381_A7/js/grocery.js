@@ -14,6 +14,15 @@ function addItem() {
 	//step1.1, 1.2: Create a prompt pop-up box by using prompt() method. Add a default text 
 	//in the prompt box when creating that prompt box. 
 	//The default text is: "add new item as nth item", where n is equal to the number of items in the grocery list + 1 
+	let suffix = "";
+	switch (listItems) {
+		case 0: suffix = "st"
+		case 1: suffix = "nd"
+		case 2: suffix = "rd"
+		default: suffix = "th"
+	}
+	prompt("Add new item as " + listItems + suffix + " item?")
+
 
 	//step 1.3, 1.4: If users clicked the "OK" button in the prompt box without entering new text (i.e., if prompt box returns 
 	//a null) or without removing the default text (i.e., if prompt box returns default text), then an alert box will pop-up 
