@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Online Converter</title>
+
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+		body {
+			font-family: 'Oswald', 'Futura', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #FFF;
+			width: 700px;
+			margin: 0 auto 0 auto;
+		}
+
+		#messageForm * {
+			height: 3em;
+			font-size: 110%
+		}
+
+		.select {
+			margin-bottom: 2rem;
+		}
+
+		input[type="text"] {
+			display: block;
+			padding-left: 1em;
+		}
+
+		input[type="button"] {
+			border: none;
+			background: none;
+		}
+
+		div.row {
+			float: left;
+		}
+
+		label {
+			padding: 0.5em;
+		}
+	</style>
+</head>
+
+<body>
+	<section id="page">
+		<h1>Online Converter </h1>
+		<form id="messageForm">
+			<div class="select">
+				<select id="category">
+					<option value="T">temperature</option>
+					<option value="L">length</option>
+					<option value="W">weight</option>
+				</select>
+			</div>
+			<div class="row">
+				<input type="text" id="leftInput" class="input">
+				<label for="leftInput">Fahrenheit</label>
+			</div>
+			<div class="row">
+				<input type="button" value="=">
+			</div>
+			<div class="row">
+				<input type="text" id="rightInput" class="input">
+				<label for="rightInput">Celsius</label>
+			</div>
+		</form>
+	</section>
+	<script>
+	
+	const leftInputBox = document.getElementById('leftInput');
+	const rightInputBox = document.getElementById('rightInput');
+	const categorySelection = document.getElementById('category');
+  
+	//step-1: Complete the changeLabel function
+  const changeLabel = function(e){
+	let option = e.target.value;
+	let leftLabel = "", rightLabel = "";
+	switch(option) {
+		case 'T':
+			leftLabel = "Fahrenheit"; rightLabel = "Celsius"; break;
+		case 'L':
+			leftLabel = "Foot"; rightLabel = "Meter"; break;
+		case 'W':
+			leftLabel = "Pound"; rightLabel = "Kilogram"; break;
+
+		}
+	document.querySelector(`label[for=${leftInputBox.id}]`).textContent = leftLabel;
+	document.querySelector(`label[for=${rightInputBox.id}]`).textContent = rightLabel;
+	}
+
+  //step-2: Change the label under input box when user changes the dropdown list selection
+   //add event listener to the "change" event to the element with id='category'
+categorySelection.addEventListener('change', changeLabel);
+
+	
+	
+  //define convert temperature function
+	const convertT = function(temp, label){ //use input box id to identify the direction of conversion
+		if(label == "Fahrenheit") //convert F to C
+		{
+			let Celsius = (5/9) *(temp-32);
+			return Celsius;
+		}
+		else //convert C to F
+		{
+			let Fahrenheit = (9/5)*temp + 32;
+			return Fahrenheit;
+		}
+	};
+	   
+	//define convert length function
+	const convertL = function(length, label){
+		if(label == "Foot") // convert Foot to Meter
+		{
+			let Meter = 0.3048*length;
+			return Meter;
+		}
+		else // convert Meter to Foot
+		{
+			let Foot = 3.28084*length;
+			return Foot;
+		}
+	};
+	
+	//define convert weight function
+	const convertW = function(weight, label){ //use label to identify the direction of conversion
+		if(label == "Pound")  //convert "Pound" to "Kilogram"
+		{
+			let  Kilogram = 0.453592*weight;
+			return Kilogram;
+		}
+		else //convert "Kilogram" to "Pound"
+		{
+			let Pound = 2.20462*weight;
+			return Pound;
+		}
+	};
+	
+	//define a conversion function to handle conversion for all kinds of inputs
+		const conversion = function (e, category) { //category is the value of selected option: "T", "L", "W"
+
+			let output = "";
+			let inputBox = e.target;
+			let label = inputBox.nextElementSibling.textContent;
+			let input = inputBox.value;
+			input = parseFloat(input);
+
+			console.log(inputBox.id);
+			console.log(input);
+
+			if (!isNaN(input)) {
+				switch (category) {
+					case "T":
+							output = convertT(input, label).toFixed(5); break;
+					case "L":
+						if (input >= 0){
+							output = convertL(input, label).toFixed(5); break;}
+						else alert("Length input cannot be a negative number")
+					case "W":
+						if (input >= 0){
+							output = convertW(input, label).toFixed(5); break; }
+						else alert("Weight input cannot be a negative number")
+				}
+				console.log(output);
+
+				//step-3: Add JS here to display output in the web page
+				if(inputBox.id == 'leftInput')
+					rightInputBox.value = output;
+				else
+					leftInputBox.value = output;
+
+			}
+		};
+	
+//step-4: add js code to add event listener to "input" event convert input and display result on web page 
+leftInputBox.addEventListener('input', function(evt){
+	conversion(evt, categorySelection.value);
+});
+
+rightInputBox.addEventListener('input', function(evt){
+	conversion(evt, categorySelection.value);
+});
+		
+//step-5: Define a reset function (use event object in the function) that reset the value of input boxes
+const reset = function(e) {e.target.value = ""}
+//or  const reset = e => e.target.value = "";
+	
+
+//step-6: add js code to add event listener to the left input box so that
+// when it gets focused, remove previous displayed value in that box (by using reset function as event handler)
+leftInputBox.addEventListener('focus', reset);
+
+
+//step-7: add js code to add event listener to the right input box so that
+// when it gets focused, remove previous displayed value in that box (by using reset function as event handler) 
+rightInputBox.addEventListener('focus', reset);
+
+
+	
+	</script> 
+  </body>
+</html>

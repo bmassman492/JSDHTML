@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+    <title>show or hide example</title>
+    <link rel="stylesheet" href="css/c13.css" />
+  </head>
+  <body>
+    <div class="container login">
+      <form id="how-heard" action="submit.html" method="get" >  
+	    <div class="one-third column" id ="side">
+          <img src="img/ginkgo.jpg" alt="logo" id="logo" />
+        </div>
+        <div class="two-thirds column" id="main">
+        <fieldset>
+            <legend>How did you hear of us?</legend>
+
+            <input type="radio" name="heard" value="search" id="search" />
+            <label for="search">Search engine</label><br>
+
+            <input type="radio" name="heard" value="print" id="print" />
+            <label for="print">Newspaper or magazine</label><br>
+
+            <input type="radio" name="heard" value="other" id="other" />
+            <label for="other">Other</label><br>
+            <input type="text" name="other-input" id="other-text" />
+  
+            <input id="submit" type="submit" value="submit">
+        </fieldset>
+        </div>	
+      </form>
+	  
+    </div><!-- .container -->
+    <script>  //add embedded js here
+	//part-1.1: Register an event handler so that when the heading "How did you hear us" is clicked by the mouse, 
+	//    an alert box is popped up and display a message: "<legend> element is clicked".
+	document.querySelector('legend').addEventListener('click', function(evt){alert(`<${evt.target.nodeName.toLowerCase()}> element is ${evt.type}ed`);})
+
+	//part-1.2: Follow up part 1.1, when the same event occurs at the heading, besides an alert box, also display 
+	//    the text content of <legend> element in the console area in the developer tool in a web browser.
+	document.querySelector('legend').addEventListener('click', function(evt){
+    console.log(evt.target.textContent);
+  });
+
+	//Part-2.1: Define a function named changeColor, which accepts two arguments that specify colors. 
+	//    and then register it as the event handler to change the background color of the <div> element with id=“side” 
+	//    when that element is hovered by the mouse (i.e., "mouseover" event will be fired).
+function changeColor (e, c1, c2){
+
+    const ele = e.target;
+    if (ele.tagName == "DIV") {
+    if (ele.style.backgroundColor == c1) {
+      ele.style.backgroundColor = c2;
+    }
+    else {
+      ele.style.backgroundColor = c1;
+    }
+  }
+
+}
+
+document.querySelector('#side').addEventListener('mouseover', function(e) {
+    changeColor(e, "white", "grey");
+});
+	//Part-2.2: Do the same thing for <div> element with id="main": change the background color of the element when
+    //	  it is hovered by the mouse.  
+document.querySelector('#main').addEventListener('mouseover', function(e) {
+    changeColor(e, "yellow", "li");
+});
+	
+	</script>
+	
+	<script src="show-option.js"> </script>
+  </body>
+</html>
