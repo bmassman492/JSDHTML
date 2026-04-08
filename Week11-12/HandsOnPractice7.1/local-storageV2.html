@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Local Storage</title>
+  <link rel="stylesheet" href="css/c09.css" />
+</head>
+
+<body>
+  <header>
+    <h1>THE MAKER BUS</h1>
+  </header>
+  <h2>What would you like to make?</h2>
+  <div class="third"><img src="img/toys1.jpg" alt="Circuit boards" /></div>
+  <div class="two-thirds">
+    <form id="application" action="save.html" method="get">
+      <label for="username">Name</label><input type="text" id="username" name="username" /><br>
+      <label for="answer">Answer</label><textarea id="answer" name="answer"></textarea>
+      <input type="submit" value="Save"><br>
+      <input type="reset" id="reset" value="Reset">
+    </form>
+  </div>
+  <script src="js/local-storageV2.js"></script>
+</body>
+
+</html>

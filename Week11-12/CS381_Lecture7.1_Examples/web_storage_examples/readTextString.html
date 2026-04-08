@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Saved data list</title>
+    <script>
+        const decode = function (text) {
+            console.log(text); //for debug and test purpose
+            text = text.replace(/\+/g, " "); //replace all "+" character with whitespace in the text string
+            console.log("after /\+/g", text); //for debug and test purpose
+
+            text = text.replace(/%[a-fA-F0-9]{2}/g,
+                //this regular expression searches for patterns that match a "%" followed by two 
+                //hexadecimal digits (e.g., "%20", "%4A", "%f3"). These patterns typically 
+                //represent URL-encoded characters.
+                /*
+    %: This matches the literal character "%", which is the prefix for URL-encoded characters.
+    [a-fA-F0-9]: This is a character class that matches any hexadecimal digit (both uppercase and lowercase).
+    {2}: This is a quantifier that specifies that the preceding element (the hexadecimal digit) must appear exactly two times.
+    /g: The "g" flag at the end indicates a global search, meaning the expression will find all occurrences in the string, not just the first one.
+                */
+                function (text) {
+                    return String.fromCharCode("0x" + text.substr(1, 2));
+                }
+            );
+            console.log("after replace", text); //for debug and test purpose
+            return text;
+        }
+        //version-1: use query string to get user input data from a form, 
+        //only works when form data were sent out through "get" method (i.e. data are appended to the URL in the HTTP request)
+        const display_data = function () {
+            let query = location.search.replace("?", "");//get entire query string after the "?" character, and remove "?" in the string
+            console.log(query); //for debug and test purpose
+            if (query == "") return;
+            let fields = query.split("&");
+            console.log(fields); //for debug and test purpose
+
+            if (fields.length == 0) {
+                let pEle = document.createElement("p");
+                pEle.textContent = "No data was submitted.";
+                document.body.append(pEle);
+            } else {
+                let data = "<dl>";
+                let field_parts;
+                for (let i = 0; i < fields.length; i++) {
+                    field_parts = fields[i].split("=");
+                    field_parts[0] = decode(field_parts[0]);
+                    field_parts[1] = decode(field_parts[1]);
+                    data += `<dt>${field_parts[0]}</dt>`;
+                    data += `<dd>${field_parts[1]}</dd>`;
+                }
+                data += "</dl>";
+                document.body.innerHTML += data;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <main>
+        <h1>Saved form data</h1>
+        <p>Congratulations! Your data is saved!</p>
+        <script>
+            display_data();
+        </script>
+    </main>
+
+</body>
+
+</html>
