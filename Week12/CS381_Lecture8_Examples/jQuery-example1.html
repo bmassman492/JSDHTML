@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jQuery example 1</title>
+  <link rel="stylesheet" href="css/c07.css">
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  include jQuery library provided by google CDN site-->
+  <script src="js/jquery-3.7.1.js"></script>
+  <!-- must include jQuery library file before using any jQuery in JS code -->
+  <script>
+    //$() is a simplified version of the jQuery() function
+    //$(function(){}) is a simplified version of $(document).ready( function(){}
+    $(function () { //$(document).ready( function(){
+      //Part-1: examples about using jQuery selector and jQuery object		
+      //DOM query: $("jQuerySelector") function 
+      const $selectedEls = $('li'); // select <li> element(s) on DOM tree, return a jQuery object containing all matched <li> elements
+      console.log($selectedEls);
+      console.log($selectedEls.length);
+
+      const $selectedPs = $('p'); // select <p> element(s) on DOM tree, if can not find any matched <p> elements, return a jQuery object as an empty object
+      console.log($selectedPs);
+      console.log($selectedPs.length); //length is 0, indicates no matched element found
+
+      //Part-2: examples about jQuery methods, 		
+      $(':header').addClass('headline'); //select all header elements <h1> - <h6>, add class attribute class = 'headline' to all matched header elements
+      $('li:lt(3)').hide().fadeIn(1500); //select the first three elements [0], [1], [2], 
+      //:lt(3) is a filtering selector that select elements with index less than 3 
+
+      //select <div id="demo"></div>, add text content which comes from text content of <li> element
+      //  $('#demo').text( $selectedEls.text()).css('color', 'white'); //display the text content that the combination of all text in all <li> elements
+
+      //get inner html from first selected li and use it to update the text content of the div with id="demo",
+      //add then change font color to "white" in that div element  
+      $('#demo').text($selectedEls.html()).css('color', 'white');
+      $('#demo3').text('jQuery').css('background-color', 'white').fadeOut(5000);
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li id="one" class="hot"><em>fresh</em> figs</li>
+      <li id="two" class="hot">pine nuts</li>
+      <li id="three" class="hot">honey</li>
+      <li id="four">balsamic vinegar</li>
+    </ul>
+  </div>
+  <div id="demo"></div>
+  <div id="demo3"></div>
+  <label for="demo2"> Enter a text here </label>
+  <input type="text" id="demo2">
+
+
+</body>
+
+</html>

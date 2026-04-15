@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jQuery - Traversing</title>
+  <link rel="stylesheet" href="css/c07.css" />
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li id="one" class="hot"><em>fresh</em> figs</li>
+      <li id="two" class="hot">pine nuts</li>
+      <li id="three" class="hot">honey</li>
+      <li id="four">balsamic vinegar</li>
+    </ul>
+  </div>
+  <!--<script src="js/jquery-1.11.0.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('ul').hide(); // jQuery method hide() to hide <ul> element, so it is invisible on web page
+      let $h2 = $('h2'); //jQuery selector to select all <h2> elements in current web page
+      $h2.append('<a class="show">show</a>'); //append an <a> element as last child in <h2> element
+
+      $h2.on('click', function (e) { //when an <h2> element is clicked, then display <ul> element which the next
+        //sibling of the h2 element by using fadeIn(), also select all child elements of <ul> element which has 
+        // class='hot', and add class = 'complete' to those child elements,
+        //use e.target will return DOM element object that can not use jQuery methods and method chaining
+        //use $(this) instead to return target element as an jQuery object
+        //$h2.next('ul') 
+        $(this).next('ul')
+          .fadeIn(500)
+          .children('.hot')
+          .addClass('complete').delay(500).fadeOut(5000);
+
+        $h2.find('a').fadeOut(500); //for each <h2> element, find <a> element inside, and make them invisible
+        //by using fadeout() method.
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>

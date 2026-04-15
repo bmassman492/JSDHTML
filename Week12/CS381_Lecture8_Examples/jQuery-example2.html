@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>jQuery example 2</title>
+  <link rel="stylesheet" href="css/c07.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(function () {  //simplified version of $(document).ready( function(){
+
+      //select individual element in a jQuery object 
+
+      //Method-1: use [index] or get(index) method
+      let selectLi = $('li')[1]; // use [index] notation will return native DOM object
+      console.log(selectLi.length); // native DOM object, no length property, return undefined  
+      console.log(selectLi.textContent); //native DOM object, can not use jQuery methods, here selectLi.text() will not work
+      console.log($(selectLi).text());
+
+      let selectLi2 = $('li').get(0);  // use get(index) method will return native DOM object
+      console.log(selectLi2.length);  // native DOM object, no length property, return undefined  
+      console.log(selectLi2.innerHTML); //native DOM object, can not use jQuery methods, here selectLi2.html() will not work
+      console.log($(selectLi2).length);
+      //Method-2: use eq() method
+      let $selectLi = $('li').eq(3); // eq(index) method will return jQuery object
+      console.log($selectLi.length); // length property works
+      console.log($selectLi.text()); // $selectLi is a jQuery object, what is returned from .text()? 
+      console.log($selectLi.html()); // $selectLi is a jQuery object, what is returned from .html()? 
+
+      //Method-3: use each() method
+      //Note: $(this) does not work in arrow function,  
+      //$('li').each(function () {
+      //  let ids = $(this).attr('id'); //This is jquery way to get id attribute from each selected <li> element 
+      //  $(this).append('<span class="order"> ' + ids + '</span>');  //jQuery way to append a <span> element in each selected <li> element
+      //}); //end of each() method
+
+      $('li').each((index, ele) => { //version-2: use arrow function instead
+         let ids = $(ele).attr('id'); //This is jquery way to get id attribute from each selected <li> element 
+         $(ele).append('<span class="order"> ' + index + ids + '</span>');  //jQuery way to append a <span> element in each selected <li> element
+         console.log(ids);
+      });
+
+      //Method-4: use slice() method to get subset of selected elements in jQuery object 
+      $('li').slice(2).css("background-color", "red");
+      console.log($('li').slice(0, 2));
+
+      //DOM manipulation: access/update contents
+      console.log($('li').html());  //what is returned from .html() method?
+      console.log($('li').text());   //what is returned from .text() method? 
+
+      //part-1: Use jQuery each() method to get text content from each selected <li> element through a jQuery object
+        $('li').each(function(){
+          console.log($(this).text());
+          console.log(this.textContent);
+        })
+
+      //iterate an array by using jQuery each method
+        $.each($('li'), (index, li) => console.log(`[${index}]: ${$(li).text()}`))
+      //where "li" is a DOM node, can be wrapped by $() to be a jQuery object
+
+      //part-2: use jQuery to set the text content for all <li> elements to "practice 8.1".
+        $('li').text("practice 8.1");
+
+      //part-3: use jQuery to set the inner html for the last two <li> element in the list to <a href=“http://www.uww.edu”> link to uww </a>
+        $('li').slice(-2).html("<a href= “http://www.uww.edu”> link to uww </a>");
+
+    }); //end of ready() method
+  </script>
+</head>
+
+<body>
+  <div id="page">
+    <h1 id="header">List</h1>
+    <h2>Buy groceries</h2>
+    <ul>
+      <li id="one" class="hot"><em>fresh</em> figs</li>
+      <li id="two" class="hot">pine nuts</li>
+      <li id="three" class="hot">honey</li>
+      <li id="four">balsamic vinegar</li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

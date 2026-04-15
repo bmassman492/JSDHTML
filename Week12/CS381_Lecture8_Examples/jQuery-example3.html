@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>jQuery Example-3</title>
+	<link rel="stylesheet" href="css/c07.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- must include jQuery library file before using any jQuery in JS code -->
+</head>
+
+<body>
+	<div id="page">
+		<h1 id="header">List</h1>
+		<h2>Buy groceries</h2>
+		<ul>
+			<li id="one" class="hot"><em>fresh</em> figs</li>
+			<li id="two" class="hot day">pine nuts</li>
+			<li id="three" class="hot">honey</li>
+			<li id="four">balsamic vinegar</li>
+		</ul>
+		<ul>
+			<li id="five" class="hot"><em>fresh</em> figs</li>
+			<li id="six" class="hot day">pine nuts</li>
+			<li id="seven" class="hot">honey</li>
+			<li id="eight">balsamic vinegar</li>
+		</ul>
+	</div>
+	<div id="demo"></div>
+	<label for="demo2"> Enter a text here </label>
+	<input type="text" id="demo2">
+	<a target="_blank" href="http://www.uww.edu">uww.edu </a><br>
+	<label>mail</label><input type="radio" name="contact" value="mail">
+	<label>email</label><input type="radio" name="contact" value="email">
+	<label>phone</label><input type="radio" name="contact" value="phone">
+
+	<script>
+		//Part-1: examples of updating inner html for all matched elements in a jQuery object 
+		//use string to update inner html of all matched elements
+		//  $( "ul li" ).slice(0,1).html("<em> This is a static string </em>"); 
+
+		//use a function call to update inner html of all matched elements in a jQuery object
+		//the call back function adding dynamics in updating inner html
+		//index refers to the index of each <li> in jQuery object
+		//text refers to the text content of each <li> in jQuery object
+		//update the text content by using the returned string.	
+		//  $( "ul li" ).slice(3,5).html(function( index, text ) { 
+		//		  return ("<em> item[" + index + "]=" + text + "</em>"); });
+
+		//Part-2: example of updating text content for each selected <li>
+		//  $( "ul li").eq(5).text("Update text content.");
+		/*  $( "ul li").slice(6).text(function( index, text ){
+					 return ("li[" + index + "]=" + text); 
+			 });
+		*/
+		//Part-3: example of replacing selected element(s)
+		//	replace entire <h2> element with a <li> element   
+		// $('h2').replaceWith("<li>ReplaceWith</li>"); 
+		// $('ul').replaceWith("<li>ReplaceWith</li>");
+		// $('ul').html("<li>ReplaceWith</li>");
+
+		//move existing element <div id='two'> to before 
+		//the <div id='one'> element on DOM
+		$('#one').before($('#two')).css('background-color', 'blue');
+
+		//Part-4: examples of creating a new element on DOM
+		//	   use $() method, use a string as argument to create a new element
+		var $newDiv = $('<div id="result" class="complete"> This is a new div element </div>');
+		$('li').after($newDiv); //insert new <div> element after each <li> element in the jQuery object
+
+		//use $() method: first argument is a string represent the new element, 2nd argument is an object literal
+		var $newDiv2 = $('<div></div>', { "id": "result", "class": "cool", "text": "This is a new div element" });
+		$('body').append($newDiv2);
+
+
+		//Part-5: example of removing an element
+		//	$('ul li').remove(); //remove all <li> elements in all <ul> elements
+		$('li').remove('.hot'); //remove all <li> elements that have class='hot'
+
+		//Part-6: example of copy an element 		
+		$('ul').clone().appendTo($('body'));
+
+		//Part-7: example:  add/update/remove attributes
+		/*console.log( $('a').attr('href')); 
+		$('a').attr('href', 'http://www.google.com'); 
+		$('input[type="radio"]').prev().css( {'color': 'yellow', 'display': 'inline-block'} );
+		$('input[type="radio"]:nth(1)').attr("checked", "true"); //set up 2nd radio button as selected button	
+			$('ul li:eq(0)').removeAttr('class').css('background-color', 'blue');	
+		$('ul li:eq(1)').removeClass('hot').css('background-color', 'green');	
+			*/
+		//Part-8: example: add/update/remove css 
+		console.log($('input').css("color"));
+		console.log($('input').css(['color', 'background-color', 'width', 'height']));
+		$('input').css({ "color": "red", 'background-color': 'yellow', 'width': "50px", "height": "+=50" });
+		//  $('input').css("color", ""); //remove current font color setting "yellow"
+
+	</script>
+</body>
+
+</html>
